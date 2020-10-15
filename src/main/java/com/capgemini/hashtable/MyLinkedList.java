@@ -18,6 +18,24 @@ public class MyLinkedList<K> {
 			this.tail = newNode;
 		}
 	}	
+	
+	public INode<K> deleteNodeWithKey(K deleteKeyValue) {
+		INode<K> returnNode = null;
+		INode<K> currNode = head, prev = null; 
+		if (currNode != null && currNode.getKey().equals(deleteKeyValue)) { 
+			head = currNode.getNext();  
+			returnNode = currNode;
+		} 
+		while (currNode != null && !currNode.getKey().equals(deleteKeyValue)) { 
+			prev = currNode; 
+			currNode = currNode.getNext(); 
+		}  
+		if (currNode != null) { 
+			prev.setNext(currNode.getNext());  
+			returnNode = currNode;
+		} 
+		return returnNode;
+	} 
 
 	public INode<K> search(K key) {
 		INode<K> tempNode = head;

@@ -8,6 +8,7 @@ public class MyMapNode<K, V> implements INode<K> {
 	public MyMapNode(K key, V value) {
 		this.key = key;
 		this.value = value;
+		this.next = null;
 	}
 
 	@Override

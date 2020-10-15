@@ -20,7 +20,7 @@ public class MyHashTable <K, V>{
 
 	public V get(K key) {
 		int index = this.getBucketIndex(key);
-		MyLinkedList<K > myLinkedList = this.myBucketArray.get(index);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
 		if(myLinkedList == null)
 			return null;
 		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.search(key);
@@ -41,6 +41,15 @@ public class MyHashTable <K, V>{
 		}
 		else
 			myMapNode.setValue(value);
+	}
+	
+	public K remove(K key) {
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		if(myLinkedList == null)
+			return null;
+		MyMapNode<K, V> nodeWhichIsDeleted = (MyMapNode<K, V>) myLinkedList.deleteNodeWithKey(key);
+		return (nodeWhichIsDeleted == null) ? null : nodeWhichIsDeleted.getKey();
 	}
 
 	@Override
